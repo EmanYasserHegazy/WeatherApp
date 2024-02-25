@@ -197,31 +197,23 @@ fun OneDayCityWeather(cityName: String, today: UIDay?) {
     }
 }
 
-//TODO
 @Composable
-fun WeatherListItem(minTemp: String, maxTemp: String, dayTime: String?, util: DateUtil = DateUtil) {
+fun WeatherListItem(
+    minTemp: String, maxTemp: String, dayTime: String?, util: DateUtil = DateUtil
+) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .padding(all = 16.dp),
-
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         val dayMonth = util.extractDayAndMonth(dayTime ?: "")
-        Text(
-            text = "$minTemp/$maxTemp",
-            style = TextStyle(fontSize = 16.sp),
-            modifier = Modifier.align(Alignment.CenterVertically)
-        )
-
-        Spacer(modifier = Modifier.width(16.dp))
-
-        Column(
-           // verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.End,
-            modifier = Modifier.fillMaxWidth()
+        Row(
+            modifier = Modifier.weight(1f), horizontalArrangement = Arrangement.Start
         ) {
-            Column(horizontalAlignment = Alignment.Start) {
+            Column(
+                horizontalAlignment = Alignment.Start
+            ) {
                 Text(
                     text = util.getWeekDayName(dayTime ?: ""), style = TextStyle(fontSize = 16.sp)
                 )
@@ -232,5 +224,11 @@ fun WeatherListItem(minTemp: String, maxTemp: String, dayTime: String?, util: Da
                 )
             }
         }
+        Spacer(modifier = Modifier.width(16.dp))
+        Text(
+            text = "$minTemp/$maxTemp",
+            style = TextStyle(fontSize = 16.sp),
+            modifier = Modifier.align(Alignment.CenterVertically)
+        )
     }
 }
