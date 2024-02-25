@@ -96,7 +96,7 @@ class WeatherRepositoryTest {
     }
 
     @Test
-    fun `test GetOfflineEmptyCurrentWeatherFromCache`() = runTest {
+    fun `test GetOfflineEmptyCurrentWeatherFromCacheFail`() = runTest {
         val cityName = "cairo"
         every { networkUtil.isNetworkConnected() } returns false
         every { sharedPreferencesUtil.getModelList(any()) } returns emptyList()
@@ -113,7 +113,7 @@ class WeatherRepositoryTest {
     }
 
     @Test
-    fun `test GetOfflineCurrentWeatherFromCache`() = runTest {
+    fun `test GetOfflineCurrentWeatherFromCacheSuccess`() = runTest {
         val cityName = "cairo"
         val days = listOf(
             Day(
@@ -156,8 +156,8 @@ class WeatherRepositoryTest {
             )
         every { networkUtil.isNetworkConnected() } returns true
         every { mockResponse.isSuccessful } returns false
-        every { mockResponse.code() } returns 403
-        every { mockResponse.message() } returns ""
+        every { mockResponse.code() } returns Constants.ERROR_CODE_403
+        every { mockResponse.message() } returns Constants.SERVER_ERROR_MESSAGE
         coEvery {
             weatherService.getWeather(
                 any(),

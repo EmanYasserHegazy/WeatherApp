@@ -42,11 +42,10 @@ object NetworkModule {
         return Cache(cacheDirectory, Constants.CACHE_SIZE.toLong())
     }
 
+    //TODO move it to seperated module
     @Provides
     fun provideSharedPreferencesUtil(
-        sharedPreferences: SharedPreferences,
-        @ApplicationContext context: Context,
-        gson: Gson
+        sharedPreferences: SharedPreferences, @ApplicationContext context: Context, gson: Gson
     ): SharedPreferenceUtil {
         return SharedPreferenceUtil(sharedPreferences, context, gson)
     }

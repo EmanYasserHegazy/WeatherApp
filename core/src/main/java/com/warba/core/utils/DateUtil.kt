@@ -36,8 +36,3 @@ object DateUtil {
     }
 
 }
-
-fun main() {
-    // Test
-    println(DateUtil.getWeekDayName("2021-04-30"))
-}
