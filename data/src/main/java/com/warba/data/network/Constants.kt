@@ -3,7 +3,7 @@ package com.warba.data.network
 object Constants {
     const val BASE_URL =
         "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/"
-    const val API_KEY = "9BTKN4JEESSQJFT6YYFHZYLBA"
+    //const val API_KEY = "9BTKN4JEESSQJFT6YYFHZYLBA"
     const val TIMEOUT_CONNECT = 60
     const val TIMEOUT_READ = 60
     const val CACHE_SIZE = 5 * 1024 * 1024
